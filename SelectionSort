@@ -1,0 +1,11 @@
+def changer(array,small):
+    location = array.index(small)
+    return array[:location] + array[location+1:]
+
+def sorter(array):
+    if not array:
+        return []
+    else:
+        smallest = min(array)
+        value = changer(array,smallest)
+        return [smallest] + sorter(value)

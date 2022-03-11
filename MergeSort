@@ -1,0 +1,31 @@
+def m_sorter(array):
+    if len(array) == 1 or not array:
+        return array
+    else:
+        left = []
+        right = []
+        for i in range(len(array)):
+            if i < (len(array)//2):
+                left.append(array[i])
+            else:
+                right.append(array[i])
+        left = m_sorter(left)
+        right = m_sorter(right)
+        return merger(left,right)
+
+def merger(left,right):
+    result = []
+    while left and right:
+        if left[0] <= right[0]:
+            result.append(left[0])
+            left = left[1:]
+        else:
+            result.append(right[0])
+            right = right[1:]
+    while left:
+        result.extend(left)
+        left = []
+    while right:
+        result.extend(right)
+        right = []
+    return result
